@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 
+    ============================================================
+    HEALTH SCALE DIGITAL - STATIC WEBSITE
+    ============================================================
+    
+    This is a self-hosted static website for Health Scale Digital.
+    It can be deployed to GitHub Pages, Netlify, Vercel, or any web server.
+    
+    FILE STRUCTURE:
+    - index.html (this file) - Main HTML structure
+    - assets/css/styles.css - All styling
+    - assets/images/ - Logo and team photos
+    
+    TO EDIT CONTENT:
+    - Search for section comments like "HERO SECTION" to find specific areas
+    - Text content is clearly labeled with comments
+    - Colors and fonts are defined in CSS variables at the top of styles.css
+    
+    ============================================================
+    -->
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags - Edit these for search engine optimization -->
+    <title>Health Scale Digital | Healthcare Performance Marketing</title>
+    <meta name="description" content="Health Scale Digital specializes in performance-based marketing solutions for the healthcare industry. Our Cost-per-Outcome™ model ensures you pay only for tangible results.">
+    <meta name="keywords" content="healthcare marketing, performance marketing, digital agency, patient acquisition, healthcare advertising">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Health Scale Digital | Healthcare Performance Marketing">
+    <meta property="og:description" content="Empowering Healthcare Growth Through Performance Marketing">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.healthscaledigital.com">
+    
+    <!-- Favicon - Replace with your own favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
+    <!-- Google Fonts - Playfair Display for headings, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- 
+    ============================================================
+    NAVIGATION HEADER
+    ============================================================
+    The sticky navigation bar at the top of the page.
+    Edit nav links to match your sections.
+    -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <!-- Logo - Click to go to top of page -->
+            <a href="#" class="nav__logo">
+                <img src="assets/images/logo-dark.png" alt="Health Scale Digital" class="nav__logo-img">
+            </a>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+            </button>
+            
+            <!-- Navigation Links - Edit href values to match section IDs -->
+            <ul class="nav__menu" id="nav-menu">
+                <li class="nav__item">
+                    <a href="#approach" class="nav__link">Our Approach</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#agency" class="nav__link">Agency</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#team" class="nav__link">Team</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#why-us" class="nav__link">Why choose us</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#contact" class="nav__link">Contact us</a>
+                </li>
+                <li class="nav__item nav__item--cta">
+                    <a href="#contact" class="btn btn--primary btn--small">Contact us</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 
+        ============================================================
+        HERO SECTION
+        ============================================================
+        The main banner area with headline and call-to-action.
+        Edit the h1, p, and button text below.
+        -->
+        <section class="hero" id="hero">
+            <div class="container hero__container">
+                <!-- Main Headline - Edit this text -->
+                <h1 class="hero__title">
+                    <em>Empowering Healthcare<br>
+                    Growth Through<br>
+                    Performance Marketing</em>
+                </h1>
+                
+                <!-- Subheadline - Edit this text -->
+                <p class="hero__subtitle">Driving Engagement and Acquisition</p>
+                
+                <!-- Call-to-Action Button -->
+                <a href="#contact" class="btn btn--accent">Contact us</a>
+            </div>
+        </section>
+
+        <!-- 
+        ============================================================
+        ABOUT US SECTION
+        ============================================================
+        Brief company introduction with highlighted text.
+        -->
+        <section class="about" id="about">
+            <div class="container about__container">
+                <h2 class="about__title">About Us</h2>
+                
+                <!-- About Text - Edit this paragraph -->
+                <p class="about__text">
+                    At Health Scale Digital, we specialize in <span class="highlight">performance-based marketing</span> solutions tailored for the healthcare industry. Our Cost-per-Outcome™ (CPO) model ensures you pay only for tangible results that align with your specific goals, such as patient appointments, service inquiries, or telehealth sign-ups.
+                </p>
+            </div>
+        </section>
+
+        <!-- 
+        ============================================================
+        OUR APPROACH SECTION
+        ============================================================
+        Two-column layout explaining the company's methodology.
+        -->
+        <section class="approach" id="approach">
+            <div class="container">
+                <h2 class="section__title">Our Approach</h2>
+                
+                <div class="approach__grid">
+                    <!-- Approach Card 1 - Cost-per-Outcome -->
+                    <div class="approach__card">
+                        <h3 class="approach__card-title">Cost-per-Outcome™ (CPO)</h3>
+                        <p class="approach__card-text">
+                            Our unique CPO model means you invest only in actual, measurable outcomes that matter to your healthcare organization. Whether it's new patient registrations, appointment bookings, or service inquiries, we align our success with yours.
+                        </p>
+                    </div>
+                    
+                    <!-- Approach Card 2 - Science Based Acquisition -->
+                    <div class="approach__card">
+                        <h3 class="approach__card-title">Science Based Acquisition</h3>
+                        <p class="approach__card-text">
+                            We use machine learning, AI, advanced analytics, and our healthcare expertise to improve key performance indicators, whether for patient acquisition or filling your B2B sales funnel. We work on a performance basis, ensuring we are invested in our shared success.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+        ============================================================
+        AGENCY / SERVICES SECTION
+        ============================================================
+        Full-service agency overview with service cards.
+        Edit each service card's title and description.
+        -->
+        <section class="agency" id="agency">
+            <div class="container">
+                <h2 class="agency__title">
+                    We are a full-service<br>
+                    digital agency
+                </h2>
+                
+                <div class="services__grid">
+                    <!-- Service Card 1 - Digital Advertising -->
+                    <div class="service__card">
+                        <h3 class="service__card-title">Digital Advertising</h3>
+                        <p class="service__card-text">
+                            With over <strong>50 years of combined experience</strong>, we utilize platforms like Google/Bing Ads, YouTube, Facebook, Instagram, and TikTok for digital marketing and PR.
+                        </p>
+                    </div>
+                    
+                    <!-- Service Card 2 - Search Optimization -->
+                    <div class="service__card">
+                        <h3 class="service__card-title">Search Optimization Everywhere</h3>
+                        <p class="service__card-text">
+                            We optimize across various platforms beyond Google and Bing, including Facebook, Instagram, TikTok, and AI technologies like ChatGPT.
+                        </p>
+                    </div>
+                    
+                    <!-- Service Card 3 - Content Marketing -->
+                    <div class="service__card">
+                        <h3 class="service__card-title">Content Marketing</h3>
+                        <p class="service__card-text">
+                            We create informative and engaging content, particularly through video, that educates and establishes authority.
+                        </p>
+                    </div>
+                    
+                    <!-- Service Card 4 - Social Media Management -->
+                    <div class="service__card">
+                        <h3 class="service__card-title">Social Media Management</h3>
+                        <p class="service__card-text">
+                            We manage social media presence to foster community engagement and build trust with current and prospective patients and clients.
+                        </p>
+                    </div>
+                    
+                    <!-- Service Card 5 - PR and Comms -->
+                    <div class="service__card">
+                        <h3 class="service__card-title">PR and Comms</h3>
+                        <p class="service__card-text">
+                            Our public relations and communications services are tailored to effectively convey your organization's message, manage your reputation and engage with your audience.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+        ============================================================
+        TEAM SECTION
+        ============================================================
+        Team member profiles with photos.
+        To add/remove team members, copy/delete a team__member div.
+        Update the image src and text for each member.
+        -->
+        <section class="team" id="team">
+            <div class="container">
+                <h2 class="team__title">Our Team</h2>
+                
+                <div class="team__grid">
+                    <!-- Team Member 1 - Sri Nagubandi -->
+                    <div class="team__member">
+                        <div class="team__member-photo">
+                            <img src="assets/images/team-sri.png" alt="Sri Nagubandi">
+                        </div>
+                        <h3 class="team__member-name">Sri Nagubandi</h3>
+                        <p class="team__member-role">Strategy Lead</p>
+                    </div>
+                    
+                    <!-- Team Member 2 - Samuel Herscher -->
+                    <div class="team__member">
+                        <div class="team__member-photo">
+                            <img src="assets/images/team-samuel.png" alt="Samuel Herscher">
+                        </div>
+                        <h3 class="team__member-name">Samuel Herscher</h3>
+                        <p class="team__member-role">UX & Front-End<br>Art Director</p>
+                    </div>
+                    
+                    <!-- Team Member 3 - Jake Sapirstein -->
+                    <div class="team__member">
+                        <div class="team__member-photo">
+                            <img src="assets/images/team-jake.png" alt="Jake Sapirstein">
+                        </div>
+                        <h3 class="team__member-name">Jake Sapirstein</h3>
+                        <p class="team__member-role">Conversion Rate<br>Optimization Lead</p>
+                    </div>
+                    
+                    <!-- Team Member 4 - Stephen Marin -->
+                    <div class="team__member">
+                        <div class="team__member-photo">
+                            <img src="assets/images/team-stephen.png" alt="Stephen Marin">
+                        </div>
+                        <h3 class="team__member-name">Stephen Marin</h3>
+                        <p class="team__member-role">Client Services Lead</p>
+                    </div>
+                    
+                    <!-- Team Member 5 - Jeetendra K Pagwani -->
+                    <div class="team__member">
+                        <div class="team__member-photo">
+                            <img src="assets/images/team-jeetendra.png" alt="Jeetendra K Pagwani">
+                        </div>
+                        <h3 class="team__member-name">Jeetendra K Pagwani</h3>
+                        <p class="team__member-role">Analytics Lead</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+        ============================================================
+        WHY CHOOSE US SECTION
+        ============================================================
+        Three-column layout highlighting key differentiators.
+        -->
+        <section class="why-us" id="why-us">
+            <div class="container">
+                <h2 class="section__title">Why Choose Us?</h2>
+                
+                <div class="why-us__grid">
+                    <!-- Reason 1 - Healthcare Expertise -->
+                    <div class="why-us__item">
+                        <h3 class="why-us__item-title">Healthcare Expertise:</h3>
+                        <p class="why-us__item-text">
+                            With a focus solely on the healthcare sector, we understand the unique challenges and regulations of the industry.
+                        </p>
+                    </div>
+                    
+                    <!-- Reason 2 - Transparent Reporting -->
+                    <div class="why-us__item">
+                        <h3 class="why-us__item-title">Transparent Reporting:</h3>
+                        <p class="why-us__item-text">
+                            We provide clear and detailed reports, so you always know the impact of your marketing investment.
+                        </p>
+                    </div>
+                    
+                    <!-- Reason 3 - Customized Strategies -->
+                    <div class="why-us__item">
+                        <h3 class="why-us__item-title">Customized Strategies:</h3>
+                        <p class="why-us__item-text">
+                            Our marketing solutions are tailored to meet the specific needs and goals of your healthcare organization.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+        ============================================================
+        CONTACT / CTA SECTION
+        ============================================================
+        Final call-to-action section.
+        The contact button can link to an email, form, or external page.
+        -->
+        <section class="cta" id="contact">
+            <div class="container cta__container">
+                <h2 class="cta__title">Get Started</h2>
+                <p class="cta__text">
+                    Ready to enhance your patient acquisition and grow your practice? Contact us today for a free consultation and discover how our performance marketing solutions can drive your success.
+                </p>
+                
+                <!-- 
+                Contact Button Options:
+                - Email: href="mailto:info@healthscaledigital.com"
+                - External form: href="https://forms.google.com/your-form"
+                - Phone: href="tel:+1234567890"
+                -->
+                <a href="mailto:info@healthscaledigital.com" class="btn btn--white">Contact Us</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 
+    ============================================================
+    FOOTER
+    ============================================================
+    Simple footer with copyright notice.
+    Update the year and company name as needed.
+    -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__text">Health Scale Digital LLC. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 
+    ============================================================
+    JAVASCRIPT
+    ============================================================
+    Handles mobile menu toggle and smooth scrolling.
+    -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
