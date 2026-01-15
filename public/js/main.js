@@ -195,6 +195,98 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /*
 ============================================================
+6. CONTACT FORM SUBMISSION
+============================================================
+Handles the contact form submission via API
+*/
+
+const contactForm = document.getElementById('contact-form');
+const submitBtn = document.getElementById('submit-btn');
+const formMessage = document.getElementById('form-message');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = {
+            name: document.getElementById('name').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            company: document.getElementById('company').value.trim(),
+            message: document.getElementById('message').value.trim()
+        };
+        
+        // Validate
+        if (!formData.name || !formData.email || !formData.message) {
+            showFormMessage('Please fill in all required fields.', 'error');
+            return;
+        }
+        
+        // Show loading state
+        setFormLoading(true);
+        
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                showFormMessage(result.message, 'success');
+                contactForm.reset();
+            } else {
+                showFormMessage(result.message || 'Something went wrong. Please try again.', 'error');
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            showFormMessage('Network error. Please check your connection and try again.', 'error');
+        } finally {
+            setFormLoading(false);
+        }
+    });
+}
+
+function setFormLoading(loading) {
+    if (submitBtn) {
+        const btnText = submitBtn.querySelector('.btn__text');
+        const btnLoading = submitBtn.querySelector('.btn__loading');
+        
+        if (loading) {
+            submitBtn.disabled = true;
+            if (btnText) btnText.style.display = 'none';
+            if (btnLoading) btnLoading.style.display = 'inline';
+        } else {
+            submitBtn.disabled = false;
+            if (btnText) btnText.style.display = 'inline';
+            if (btnLoading) btnLoading.style.display = 'none';
+        }
+    }
+}
+
+function showFormMessage(message, type) {
+    if (formMessage) {
+        formMessage.textContent = message;
+        formMessage.className = 'form__message form__message--' + type;
+        formMessage.style.display = 'block';
+        
+        // Auto-hide after 5 seconds for success messages
+        if (type === 'success') {
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        }
+    }
+}
+
+
+/*
+============================================================
 UTILITY FUNCTIONS
 ============================================================
 Helper functions that can be used throughout the site.

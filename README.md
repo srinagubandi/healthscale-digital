@@ -1,214 +1,208 @@
-# Health Scale Digital - Static Website
+# Health Scale Digital
 
-A self-hosted static website for Health Scale Digital, a healthcare performance marketing agency. This site can be deployed to GitHub Pages, Netlify, Vercel, or any web server.
+A full-stack website with contact form, admin dashboard, and email/WhatsApp notifications. Designed for easy deployment to Railway via GitHub.
 
-## Quick Start
+## Features
 
-### Option 1: GitHub Pages (Free Hosting)
+- **Responsive Website** - Pixel-perfect clone of the original Health Scale Digital site
+- **Contact Form** - Captures leads with name, email, phone, company, and message
+- **Admin Dashboard** - View, manage, and respond to submissions
+- **Email Notifications** - Get notified via email when someone submits the form
+- **WhatsApp Notifications** - Get notified via WhatsApp (using Twilio)
+- **PostgreSQL Database** - Stores all submissions securely
 
-1. Push this repository to GitHub
-2. Go to repository **Settings** → **Pages**
-3. Under "Source", select **main** branch and **/ (root)** folder
-4. Click **Save**
-5. Your site will be live at `https://yourusername.github.io/repository-name`
+## Tech Stack
 
-### Option 2: Netlify (Free Hosting)
-
-1. Go to [netlify.com](https://netlify.com) and sign up
-2. Click **"Add new site"** → **"Import an existing project"**
-3. Connect your GitHub repository
-4. Deploy settings are automatic for static sites
-5. Click **Deploy**
-
-### Option 3: Vercel (Free Hosting)
-
-1. Go to [vercel.com](https://vercel.com) and sign up
-2. Click **"New Project"**
-3. Import your GitHub repository
-4. Click **Deploy**
-
-### Option 4: Any Web Server
-
-Simply upload all files to your web server's public directory (e.g., `public_html`, `www`, or `htdocs`).
+- **Backend**: Node.js, Express.js
+- **Database**: PostgreSQL
+- **Templating**: EJS
+- **Email**: Nodemailer (SMTP)
+- **WhatsApp**: Twilio API
 
 ---
 
-## File Structure
+## Deploy to Railway
+
+### Step 1: Fork/Push to GitHub
+
+Make sure this code is in your GitHub repository.
+
+### Step 2: Create Railway Project
+
+1. Go to [Railway](https://railway.app)
+2. Click **"New Project"**
+3. Select **"Deploy from GitHub repo"**
+4. Choose your repository
+
+### Step 3: Add PostgreSQL Database
+
+1. In your Railway project, click **"+ New"**
+2. Select **"Database"** then **"Add PostgreSQL"**
+3. Railway will automatically set the `DATABASE_URL` environment variable
+
+### Step 4: Configure Environment Variables
+
+In Railway, go to your service then **Variables** tab and add:
+
+#### Required Variables:
+```
+SESSION_SECRET=<generate-a-random-string>
+```
+
+#### Email Notifications (Optional):
+```
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
+NOTIFICATION_EMAIL=your-email@example.com
+```
+
+#### WhatsApp Notifications (Optional):
+```
+TWILIO_ACCOUNT_SID=your-twilio-sid
+TWILIO_AUTH_TOKEN=your-twilio-token
+TWILIO_WHATSAPP_FROM=whatsapp:+14155238886
+WHATSAPP_NOTIFICATION_TO=whatsapp:+1234567890
+```
+
+### Step 5: Deploy
+
+Railway will automatically deploy when you push to GitHub. Click **"Deploy"** to trigger manually.
+
+### Step 6: Set Up Admin Account
+
+1. Visit `https://your-app.railway.app/admin/setup`
+2. Create your admin username and password
+3. You can now access the dashboard at `/admin`
+
+---
+
+## Email Setup
+
+### Gmail (Recommended for Testing)
+
+1. Enable 2-Factor Authentication on your Google account
+2. Go to Google App Passwords (myaccount.google.com/apppasswords)
+3. Generate an App Password for "Mail"
+4. Use this password as `SMTP_PASS`
+
+### SendGrid (Recommended for Production)
+
+1. Create account at SendGrid
+2. Create an API key
+3. Use these settings:
+   - `SMTP_HOST=smtp.sendgrid.net`
+   - `SMTP_PORT=587`
+   - `SMTP_USER=apikey`
+   - `SMTP_PASS=your-api-key`
+
+---
+
+## WhatsApp Setup (Twilio)
+
+### Sandbox Testing
+
+1. Create account at Twilio
+2. Go to **Messaging** then **Try it out** then **Send a WhatsApp message**
+3. Follow sandbox setup (send "join sandbox-code" to the Twilio number)
+4. Use sandbox number: `whatsapp:+14155238886`
+
+### Production
+
+1. Apply for WhatsApp Business API access through Twilio
+2. Get a dedicated WhatsApp number
+3. Update `TWILIO_WHATSAPP_FROM` with your number
+
+---
+
+## Local Development
+
+### Prerequisites
+
+- Node.js 18+
+- PostgreSQL database
+
+### Setup
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Create `.env` file: `cp .env.example .env`
+4. Edit `.env` with your database URL and other settings
+5. Start the server: `npm run dev`
+6. Visit `http://localhost:3000`
+
+---
+
+## Project Structure
 
 ```
 healthscale-digital/
-├── index.html              # Main HTML file (edit content here)
-├── README.md               # This file
-├── assets/
-│   ├── css/
-│   │   └── styles.css      # All styling (edit colors, fonts, spacing)
-│   ├── js/
-│   │   └── main.js         # JavaScript for mobile menu & smooth scroll
-│   └── images/
-│       ├── logo-dark.png   # Logo for light backgrounds
-│       ├── logo-light.png  # Logo for dark backgrounds
-│       ├── team-sri.png    # Team member photos
-│       ├── team-samuel.png
-│       ├── team-jake.png
-│       ├── team-stephen.png
-│       └── team-jeetendra.png
+├── server/
+│   ├── index.js          # Main Express server
+│   ├── db/
+│   │   └── index.js      # Database connection
+│   ├── routes/
+│   │   ├── api.js        # Contact form API
+│   │   └── admin.js      # Admin dashboard routes
+│   └── services/
+│       ├── email.js      # Email notifications
+│       └── whatsapp.js   # WhatsApp notifications
+├── views/
+│   ├── index.ejs         # Main website
+│   ├── 404.ejs           # Error page
+│   └── admin/            # Admin dashboard views
+├── public/
+│   ├── css/styles.css    # Stylesheet
+│   ├── js/main.js        # Frontend JavaScript
+│   └── images/           # Images and assets
+├── package.json
+├── railway.json          # Railway configuration
+└── .env.example          # Environment template
 ```
 
 ---
 
-## How to Edit Content
+## Admin Dashboard
 
-### Editing Text Content
+Access the admin dashboard at `/admin`:
 
-Open `index.html` in any text editor. Each section is clearly marked with comments:
+- View all submissions with status (new, read, replied, archived)
+- See submission details including notification logs
+- Update status to track your responses
+- Delete submissions when no longer needed
+- Reply via email directly from the dashboard
 
-```html
-<!-- 
-============================================================
-HERO SECTION
-============================================================
--->
-```
+---
 
-Simply find the section you want to edit and change the text between the HTML tags.
+## API Endpoints
 
-### Changing Colors
+### POST /api/contact
 
-Open `assets/css/styles.css` and find the **CSS Variables** section at the top:
+Submit a contact form.
 
-```css
-:root {
-    /* Primary blue color */
-    --color-primary: #2B8AC4;
-    
-    /* Yellow/lime accent for buttons */
-    --color-accent: #D4E157;
-    
-    /* Change these to update colors site-wide */
+Request Body:
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "phone": "+1234567890",
+  "company": "Acme Inc",
+  "message": "I'd like to learn more about your services."
 }
 ```
 
-### Changing Fonts
-
-The site uses Google Fonts. To change fonts:
-
-1. Go to [fonts.google.com](https://fonts.google.com)
-2. Select your fonts
-3. Copy the `<link>` tag
-4. Replace the font link in `index.html`
-5. Update the font names in `styles.css`:
-
-```css
-:root {
-    --font-heading: 'Your New Font', serif;
-    --font-body: 'Your New Font', sans-serif;
+Response:
+```json
+{
+  "success": true,
+  "message": "Thank you for your message! We will get back to you soon.",
+  "submissionId": 1
 }
 ```
-
-### Adding/Removing Team Members
-
-In `index.html`, find the Team Section. To add a member, copy this block:
-
-```html
-<div class="team__member">
-    <div class="team__member-photo">
-        <img src="assets/images/team-newperson.png" alt="Name">
-    </div>
-    <h3 class="team__member-name">Full Name</h3>
-    <p class="team__member-role">Job Title</p>
-</div>
-```
-
-To remove a member, delete their entire `<div class="team__member">...</div>` block.
-
-### Updating the Contact Button
-
-Find the CTA section in `index.html` and change the `href` attribute:
-
-```html
-<!-- Email link -->
-<a href="mailto:info@healthscaledigital.com" class="btn btn--white">Contact Us</a>
-
-<!-- Or link to a form -->
-<a href="https://forms.google.com/your-form" class="btn btn--white">Contact Us</a>
-
-<!-- Or link to a phone number -->
-<a href="tel:+1234567890" class="btn btn--white">Contact Us</a>
-```
-
----
-
-## Custom Domain Setup
-
-### GitHub Pages
-
-1. Go to repository **Settings** → **Pages**
-2. Under "Custom domain", enter your domain (e.g., `www.healthscaledigital.com`)
-3. Add these DNS records at your domain registrar:
-
-| Type  | Name | Value                          |
-|-------|------|--------------------------------|
-| CNAME | www  | yourusername.github.io         |
-| A     | @    | 185.199.108.153               |
-| A     | @    | 185.199.109.153               |
-| A     | @    | 185.199.110.153               |
-| A     | @    | 185.199.111.153               |
-
-### Netlify
-
-1. Go to **Site settings** → **Domain management**
-2. Click **Add custom domain**
-3. Follow the DNS configuration instructions
-
-### Vercel
-
-1. Go to **Project Settings** → **Domains**
-2. Add your domain
-3. Follow the DNS configuration instructions
-
----
-
-## Browser Support
-
-This website supports all modern browsers:
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers (iOS Safari, Chrome for Android)
-
----
-
-## Performance Tips
-
-1. **Optimize Images**: Use [TinyPNG](https://tinypng.com) to compress images
-2. **Enable Caching**: Most hosting platforms handle this automatically
-3. **Use CDN**: Netlify and Vercel include CDN by default
-
----
-
-## Troubleshooting
-
-### Images not loading
-- Check that image file names match exactly (case-sensitive)
-- Ensure images are in `assets/images/` folder
-
-### Styles not applying
-- Clear your browser cache (Ctrl+Shift+R or Cmd+Shift+R)
-- Check that `styles.css` path is correct in `index.html`
-
-### Mobile menu not working
-- Ensure `main.js` is loaded at the bottom of `index.html`
-- Check browser console for JavaScript errors
 
 ---
 
 ## License
 
-This website template is provided for Health Scale Digital's exclusive use.
-
----
-
-## Support
-
-For questions about this template, refer to the detailed comments in each file or consult a web developer.
+MIT License - Feel free to use this for your own projects.
