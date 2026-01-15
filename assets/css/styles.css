@@ -1,11 +1,8 @@
 /*
 ============================================================
-HEALTH SCALE DIGITAL - EXACT CLONE STYLESHEET
+HEALTH SCALE DIGITAL - PIXEL-PERFECT CLONE STYLESHEET
 ============================================================
-
-This stylesheet replicates the exact styling of the original
-Squarespace site. Colors, fonts, and spacing match precisely.
-
+Exact match to original Squarespace site styling
 ============================================================
 */
 
@@ -17,16 +14,17 @@ Squarespace site. Colors, fonts, and spacing match precisely.
 
 :root {
     /* ----- EXACT COLORS FROM ORIGINAL SITE ----- */
-    --color-primary-blue: #1470AF;      /* rgb(20, 112, 175) - About/CTA sections */
-    --color-hero-bg: #EAEAEE;           /* rgb(234, 234, 238) - Hero background */
+    --color-primary-blue: #1470AF;      /* rgb(20, 112, 175) */
+    --color-hero-bg: #EAEAEE;           /* rgb(234, 234, 238) */
+    --color-about-title: #8EB6DC;       /* rgb(142, 182, 220) - light blue for About Us title */
     --color-black: #000000;
     --color-white: #FFFFFF;
     
-    /* ----- TYPOGRAPHY - MANROPE FONT ----- */
+    /* ----- TYPOGRAPHY ----- */
     --font-heading: 'Manrope', sans-serif;
-    --font-body: 'Manrope', sans-serif;
+    --font-body: 'Poppins', sans-serif;
     
-    /* ----- EXACT SPACING ----- */
+    /* ----- SPACING ----- */
     --header-height: 65px;
     --container-max-width: 1200px;
     --section-padding: 80px;
@@ -40,7 +38,7 @@ Squarespace site. Colors, fonts, and spacing match precisely.
 ============================================================
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
 
 *,
 *::before,
@@ -58,7 +56,7 @@ html {
 body {
     font-family: var(--font-body);
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.5;
     color: var(--color-black);
     background-color: var(--color-white);
     -webkit-font-smoothing: antialiased;
@@ -95,7 +93,7 @@ ul {
 
 /* 
 ============================================================
-4. HEADER & NAVIGATION - EXACT MATCH
+4. HEADER & NAVIGATION
 ============================================================
 */
 
@@ -137,11 +135,12 @@ ul {
     gap: 32px;
 }
 
+/* Nav links use Poppins like original */
 .nav__link {
-    font-size: 14px;
-    font-weight: 500;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
     color: var(--color-black);
-    letter-spacing: 0;
     transition: opacity 0.2s ease;
 }
 
@@ -160,8 +159,9 @@ ul {
     color: var(--color-white);
     padding: var(--button-padding);
     border-radius: var(--button-radius);
-    font-size: 14px;
-    font-weight: 500;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
     transition: opacity 0.2s ease;
 }
 
@@ -191,7 +191,7 @@ ul {
 
 /* 
 ============================================================
-5. HERO SECTION - EXACT MATCH
+5. HERO SECTION
 ============================================================
 */
 
@@ -210,35 +210,42 @@ ul {
     margin: 0 auto;
 }
 
-/* EXACT hero title styling from original */
+/* Hero title - Manrope, NOT italic, weight 500 */
 .hero__title {
     font-family: var(--font-heading);
     font-size: 62px;
     font-weight: 500;
+    font-style: normal;
     line-height: 1.06;
     letter-spacing: -1.24px;
     color: var(--color-black);
     margin-bottom: 24px;
+}
+
+/* Make it italic like original */
+.hero__title em,
+.hero__title i {
     font-style: italic;
 }
 
 .hero__subtitle {
+    font-family: var(--font-body);
     font-size: 16px;
     font-weight: 400;
     color: var(--color-black);
     margin-bottom: 32px;
-    letter-spacing: 0;
 }
 
-/* Hero CTA Button - Black (matches original) */
+/* Hero CTA Button - Black */
 .btn--hero {
     display: inline-block;
     background-color: var(--color-black);
     color: var(--color-white);
     padding: var(--button-padding);
     border-radius: var(--button-radius);
-    font-size: 14px;
-    font-weight: 500;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
     transition: opacity 0.2s ease;
 }
 
@@ -265,18 +272,21 @@ ul {
     max-width: 1000px;
 }
 
+/* About Us title - light blue color */
 .about__title {
     font-family: var(--font-heading);
-    font-size: 42px;
-    font-weight: 400;
-    color: var(--color-white);
+    font-size: 44px;
+    font-weight: 500;
+    font-style: normal;
+    color: var(--color-about-title);
     line-height: 1.2;
 }
 
 .about__text {
+    font-family: var(--font-body);
     color: var(--color-white);
-    font-size: 15px;
-    line-height: 1.7;
+    font-size: 16px;
+    line-height: 1.5;
     font-weight: 400;
 }
 
@@ -299,11 +309,12 @@ ul {
     padding: 80px 0;
 }
 
+/* Section title - NOT italic */
 .approach .section__title {
     font-family: var(--font-heading);
-    font-size: 42px;
-    font-weight: 400;
-    font-style: italic;
+    font-size: 44px;
+    font-weight: 500;
+    font-style: normal;
     text-align: center;
     margin-bottom: 60px;
     color: var(--color-black);
@@ -324,17 +335,17 @@ ul {
 
 .approach__card-title {
     font-family: var(--font-heading);
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 500;
     margin-bottom: 20px;
     color: var(--color-black);
-    letter-spacing: -0.3px;
 }
 
 .approach__card-text {
-    font-size: 15px;
+    font-family: var(--font-body);
+    font-size: 16px;
     color: #333;
-    line-height: 1.7;
+    line-height: 1.5;
     font-weight: 400;
 }
 
@@ -349,10 +360,11 @@ ul {
     padding: 80px 0;
 }
 
+/* Agency title IS italic */
 .agency__title {
     font-family: var(--font-heading);
-    font-size: 42px;
-    font-weight: 400;
+    font-size: 44px;
+    font-weight: 500;
     font-style: italic;
     color: var(--color-white);
     margin-bottom: 50px;
@@ -374,14 +386,15 @@ ul {
 
 .service__card-title {
     font-family: var(--font-heading);
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 21px;
+    font-weight: 500;
     margin-bottom: 16px;
     color: var(--color-black);
     line-height: 1.3;
 }
 
 .service__card-text {
+    font-family: var(--font-body);
     font-size: 13px;
     color: #333;
     line-height: 1.6;
@@ -399,10 +412,11 @@ ul {
     padding: 80px 0;
 }
 
+/* Team title IS italic */
 .team__title {
     font-family: var(--font-heading);
-    font-size: 42px;
-    font-weight: 400;
+    font-size: 44px;
+    font-weight: 500;
     font-style: italic;
     color: var(--color-white);
     text-align: center;
@@ -440,12 +454,13 @@ ul {
 }
 
 .team__member-role {
+    font-family: var(--font-body);
     font-size: 11px;
     color: #888;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     line-height: 1.5;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 /* 
@@ -459,10 +474,11 @@ ul {
     padding: 80px 0;
 }
 
+/* Why Choose Us title IS italic */
 .why-us .section__title {
     font-family: var(--font-heading);
-    font-size: 42px;
-    font-weight: 400;
+    font-size: 44px;
+    font-weight: 500;
     font-style: italic;
     text-align: center;
     margin-bottom: 60px;
@@ -486,9 +502,10 @@ ul {
 }
 
 .why-us__item-text {
+    font-family: var(--font-body);
     font-size: 15px;
     color: #333;
-    line-height: 1.7;
+    line-height: 1.6;
     font-weight: 400;
 }
 
@@ -511,16 +528,17 @@ ul {
 
 .cta__title {
     font-family: var(--font-heading);
-    font-size: 32px;
-    font-weight: 700;
+    font-size: 34px;
+    font-weight: 500;
     color: var(--color-white);
     margin-bottom: 20px;
 }
 
 .cta__text {
+    font-family: var(--font-body);
     color: var(--color-white);
-    font-size: 15px;
-    line-height: 1.7;
+    font-size: 16px;
+    line-height: 1.5;
     margin-bottom: 32px;
     font-weight: 400;
 }
@@ -532,8 +550,9 @@ ul {
     color: var(--color-black);
     padding: var(--button-padding);
     border-radius: var(--button-radius);
-    font-size: 14px;
-    font-weight: 600;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
     transition: opacity 0.2s ease;
 }
 
@@ -553,6 +572,7 @@ ul {
 }
 
 .footer__text {
+    font-family: var(--font-body);
     color: var(--color-white);
     font-size: 13px;
     font-style: italic;
